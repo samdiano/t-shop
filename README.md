@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/samdiano/shopmate.svg?token=SQLfwwCh9DxzqKxyuagy&branch=develop)](https://travis-ci.com/samdiano/shopmate)
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
