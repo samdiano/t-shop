@@ -1,0 +1,64 @@
+.subscribe {
+  height: 72px;
+  background-color: #efefef;
+  width: 100%;
+}
+
+.subscribe-container {
+  width: 920px;
+  justify-content: space-between;
+  display: flex;
+  margin: auto;
+  padding-top: 2%;
+}
+
+.sub-text {
+  width: 493px;
+  height: 24px;
+  font-family: LucidaGrande;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: #2e2e2e;
+}
+
+.sub-input {
+  width: 310px;
+  height: 36px;
+  border-radius: 18px;
+  border: solid 1px #e1e1e1;
+  background-color: var(--white-two);
+  padding-left: 30px;
+}
+
+.sub-input::placeholder {
+  width: 115px;
+  height: 24px;
+  font-family: OpenSans;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  color: #bababa;
+  padding: 5px 15px;
+}
+
+.sub-button {
+  width: 91px;
+  height: 35px;
+  border-radius: 24px;
+  background-color: var(--red-pink);
+  color: #efefef;
+}
+.sub-button:hover {
+  width: 91px;
+  height: 35px;
+  border-radius: 24px;
+  color: var(--red-pink);
+  background-color: #efefef;
+}

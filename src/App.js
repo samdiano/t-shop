@@ -1,17 +1,31 @@
 import React, { Component } from "react";
-import logo from "./logo.svg";
-import "./App.css";
+import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import "./App.scss";
 import { Provider } from "react-redux";
-import Header from './components/Header';
-import store from "./store"
+import Header from './components/Header/Header';
+import HeaderTop from './components/Header/HeaderTop';
+import Footer from './components/Footer/Footer';
+import Home from './components/Home/Home';
+import store from "./store";
+import Subscribe from './components/Subscribe/Subscribe';
 
 class App extends Component {
   render() {
     return (
       <Provider store={store}>
-        <div className="App">
-          <Header />
-        </div>
+        <Router>
+          <div className="App">
+            <HeaderTop />
+            <Header />
+            <div className="wrapper">
+                <Switch>
+                  <Route exact path= "/" component={Home} />
+                </Switch>
+            </div>
+            <Subscribe />
+            <Footer />
+          </div>
+        </Router>
       </Provider>
     );
   }
