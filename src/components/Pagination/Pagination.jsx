@@ -66,8 +66,52 @@ const Pagination = ({
   maxPages,
   handlePagination
 }) => {
-    const pager = paginate(totalItems, currentPage, pageSize, maxPages);
-    console.log(pager);
+  const pager = paginate(totalItems, currentPage, pageSize, maxPages);
+  const firstPage = pager.pages[0] !== 1 && (
+    <span className="d-flex justify-content-between">
+      <li className="page-item">
+        <span onClick={() => handlePagination(1)} className="page-link">
+          1
+        </span>
+      </li>
+      ...
+    </span>
+  );
+  const lastPage = pager.pages[pager.pages.length - 1] !== pager.totalPages && (
+    <span className="d-flex justify-content-between">
+      ...
+      <li className="page-item">
+        <span
+          onClick={() => handlePagination(pager.totalPages)}
+          className="page-link"
+        >
+          {pager.totalPages}
+        </span>
+      </li>
+    </span>
+  );
+  const previousPage = (
+    <li className="page-item">
+      <span
+        onClick={() => handlePagination(pager.currentPage - 1)}
+        className="page-link"
+      >
+        <i class="fas fa-chevron-left rounded" />
+        <span>Previous</span>
+      </span>
+    </li>
+  );
+  const nextPage = (
+    <li className="page-item">
+      <span
+        onClick={() => handlePagination(pager.currentPage + 1)}
+        className="page-link"
+      >
+        <span>Next</span>
+        <i class="fas fa-chevron-right rounded" />
+      </span>
+    </li>
+  );
   const page = pager.pages.map((page, key) => (
     <li className="page-item">
       <span onClick={() => handlePagination(page)} className="page-link">
@@ -79,26 +123,13 @@ const Pagination = ({
   return (
     <nav className="mt-3">
       <ul className="pagination mb-0 pb-0">
-        <li className="page-item">
-          <a className="page-link" href="#" aria-label="Previous">
-            <i class="fas fa-chevron-left rounded" />
-            <span>Previous</span>
-          </a>
-        </li>
+        {previousPage}
         <span className="pages">
+          {firstPage}
           {page}
-          <li className="page-item">
-            <span onClick={() => handlePagination(page)} className="page-link">
-              
-            </span>
-          </li>
+          {lastPage}
         </span>
-        <li className="page-item">
-          <a className="page-link" href="#" aria-label="Next">
-            <span>Next</span>
-            <i class="fas fa-chevron-right rounded" />
-          </a>
-        </li>
+        {nextPage}
       </ul>
     </nav>
   );

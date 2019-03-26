@@ -20,7 +20,7 @@ export default class Header extends Component {
             <span className="navbar-toggler-icon" />
           </span>
 
-          <div className="collapse navbar-collapse" id="navbarsExample07">
+          <div className="collapse navbar-collapse d-flex justify-content-between" id="navbarsExample07">
             <ul className="navbar-nav mr-4">
               <li className="navbar-item">
                 <a className="nav-link" href="#">

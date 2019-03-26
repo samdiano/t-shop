@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import flag from '../../assets/images/british-flag.png';
 
 export default class HeaderTop extends Component {
   render() {
@@ -13,7 +14,7 @@ export default class HeaderTop extends Component {
             <span className="price">
               {" "}
               <img
-                src="https://flaglane.com/download/british-flag/british-flag-graphic.png"
+                src={flag}
                 alt="flag"
                 height="15"
               />{" "}

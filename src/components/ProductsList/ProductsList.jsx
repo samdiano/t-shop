@@ -6,21 +6,22 @@ import ProductCard from "../ProductCard/ProductCard";
 import Pagination from "../Pagination/Pagination";
 
 class ProductsList extends Component {
-  state = { products: [], currentPage: 1, pageSize: 6, maxPages: 5, };
+  state = { products: [], currentPage: 1, pageSize: 6, maxPages: 5 };
+
   static getDerivedStateFromProps(props) {
     return props;
   }
   componentDidMount() {
-    this.props.getProducts(this.state.currentPage, this.state.pageSize)
+    this.props.getProducts(this.state.currentPage, this.state.pageSize);
   }
   handlePagination = page => {
-      this.setState({ currentPage: page });
+    this.setState({ currentPage: page });
   };
 
   componentDidUpdate(prevProps, prevState) {
-    if (prevState.currentPage !== this.state.currentPage) 
-    this.props.getProducts(this.state.currentPage, this.state.pageSize);
-  };
+    if (prevState.currentPage !== this.state.currentPage)
+      this.props.getProducts(this.state.currentPage, this.state.pageSize);
+  }
 
   renderProducts = () => {
     if (this.state.products !== undefined)
@@ -40,9 +41,8 @@ class ProductsList extends Component {
     return (
       <Fragment>
         <div className="row">{this.renderProducts()}</div>
-        {console.log(this.props, this.state)}
         <Pagination
-          totalItems={this.props.totalItems!==undefined &&this.props.totalItems}
+          totalItems={this.props.totalItems}
           currentPage={this.state.currentPage}
           pageSize={this.state.pageSize}
           maxPages={this.state.maxPages}
