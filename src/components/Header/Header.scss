@@ -1,0 +1,128 @@
+.navbar {
+  height: 72px;
+  background-color: var(--white-two);
+}
+
+.navbar-top {
+  height: 48px;
+}
+
+@media (min-width: 998px) {
+  .navbar-expand-lg > .container {
+    margin: auto;
+    width: 1000px;
+  }
+}
+
+@media (max-width: 998px) {
+  .navbar {
+    width: 1000px;
+    height: 150px;
+  }
+
+  a.shop-mate.text-uppercase {
+    height: 29px;
+    font-size: 94px;
+    font-weight: bold;
+    font-style: normal;
+    font-stretch: normal;
+    line-height: normal;
+    letter-spacing: 4px;
+    color: #f62f5e;
+    margin: 0 0 10% 10%;
+  }
+}
+span.price {
+  margin-right: 30px;
+  color: var(--white-two);
+}
+.Hi-or {
+  width: 106px;
+  height: 36px;
+  font-family: Montserrat;
+  font-size: 15px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.4;
+  letter-spacing: normal;
+  color: var(--white-two);
+}
+
+.wrapper {
+  width: 940px;
+  margin: 30px auto;
+}
+
+.navbar-item {
+  height: 36px;
+  font-size: 15px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 2.4;
+  letter-spacing: normal;
+}
+.navbar-nav {
+  padding-left: 50px;
+  margin-right: 50px;
+  padding-bottom: 10px;
+}
+.navbar-dark .navbar-nav .nav-link {
+  color: black;
+}
+.bg-dark {
+  color: var(--white-two);
+  background-color: #2e2e2e !important;
+}
+.red {
+  color: var(--red-pink);
+}
+.shop-mate {
+  height: 29px;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: 4px;
+  color: var(--red-pink);
+}
+
+.shop-mate:hover {
+  color: var(--red-pink);
+  text-decoration: none;
+}
+
+.search-bar {
+  width: 260px;
+  height: 36px;
+  border-radius: 18px;
+  border: solid 1px #e1e1e1;
+  background-color: var(--white-two);
+  padding: 0 30px 0 30px;
+}
+
+.search-bar::placeholder {
+  width: 113px;
+  height: 24px;
+  font-family: OpenSans;
+  font-size: 14px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.71;
+  letter-spacing: normal;
+  color: #bababa;
+}
+
+.fa-shopping-bag {
+  color: var(--brownish-grey);
+  font-size: 1.3em;
+}
+.cart {
+  // padding-left: 16%;
+}
+.cart-top {
+  margin: 0 20px;
+}

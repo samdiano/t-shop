@@ -1,0 +1,38 @@
+.product-card {
+  height: 336px;
+  box-shadow: 0 1px 1px 0 rgba(0, 0, 0, 0.2);
+  background-color: var(--white-two);
+  border-radius: 0;
+}
+
+.product-card:hover {
+  height: 336px;
+  height: 336px;
+  box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.3);
+  background-color: var(--white-two);
+}
+
+.space {
+  display: flex;
+  justify-content: space-around;
+  width: 100%;
+}
+.price {
+  font-family: Montserrat;
+  font-size: 16px;
+  color: var(--red-pink);
+}
+.purchase-btn {
+  width: 91px;
+  height: 35px;
+  border-radius: 24px;
+  background-color: var(--red-pink);
+  color: var(--white-two);
+}
+.purchase-btn:hover {
+  width: 91px;
+  height: 35px;
+  border-radius: 24px;
+  color: var(--red-pink);
+  background-color: var(--white-two);
+}
