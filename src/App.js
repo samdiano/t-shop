@@ -6,6 +6,7 @@ import Header from './components/Header/Header';
 import HeaderTop from './components/Header/HeaderTop';
 import Footer from './components/Footer/Footer';
 import Home from './components/Home/Home';
+import ViewProduct from './components/ViewProduct/ViewProduct';
 import store from "./store";
 import Subscribe from './components/Subscribe/Subscribe';
 
@@ -20,6 +21,7 @@ class App extends Component {
             <div className="wrapper">
                 <Switch>
                   <Route exact path= "/" component={Home} />
+                  <Route exact path= "/products/:productId" component={ViewProduct} />
                 </Switch>
             </div>
             <Subscribe />

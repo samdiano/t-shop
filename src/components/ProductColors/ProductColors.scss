@@ -1,0 +1,96 @@
+.red {
+    background-color: red;
+}
+
+.red:hover, .red.active {
+    border-color: white;
+    background-color: red !important;
+}
+.orange {
+    background-color: orange
+}
+.orange:hover, .orange.active {
+    border-color: white;
+    background-color: orange !important;
+}
+.green {
+    background-color: green
+}
+.green:hover, .green.active {
+    border-color: white;
+    background-color: green !important;
+}
+.indigo {
+    background-color: indigo
+}
+.indigo:hover, .indigo.active {
+    border-color: white;
+    background-color: indigo !important;
+}
+.blue {
+    background-color: blue
+}
+.blue:hover, .blue.active {
+    border-color: white;
+    background-color: blue !important;
+}
+.purple {
+    background-color: purple
+}
+.purple:hover, .purple.active {
+    border-color: white;
+    background-color: purple !important;
+}
+.yellow {
+    background-color: yellow
+}
+.yellow:hover, .yellow.active {
+    border-color: white;
+    background-color: yellow !important;
+}
+.black {
+    background-color: black
+}
+.black:hover, .black.active {
+    border-color: white;
+    background-color: black !important;
+}
+.white {
+    background-color: white
+}
+.white:hover, .white.active {
+    border-color: gray;
+    background-color: white !important;
+}
+
+.fa-circle {
+    border-radius: 50%;
+    margin-right: 10px;
+}
+
+// label.btn.btn-secondary.active {
+//     border-radius: 50%;
+//     width: 100px;
+//     height: 25px;
+// }
+
+.btn-group>.btn-group>.btn, .btn-group>.btn:not(.dropdown-toggle) {
+    /* border-top-right-radius: 0; */
+    /* border-bottom-right-radius: 0; */
+    border-radius: 50%;
+    width: 10px;
+    height: 25px;
+}
+
+.btn-secondary:not(:disabled):not(.disabled).active, .btn-secondary:not(:disabled):not(.disabled):active, .show>.btn-secondary.dropdown-toggle {
+    color: #fff;
+    /* background-color: #545b62; */
+    border-color: #4e555b;
+}
+.btn-group>.btn-group:not(:last-child)>.btn, .btn-group>.btn:not(:last-child):not(.dropdown-toggle) {
+    /* border-top-right-radius: 0; */
+    /* border-bottom-right-radius: 0; */
+    border-radius: 50%;
+    width: 10px;
+    height: 25px;
+}

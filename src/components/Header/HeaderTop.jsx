@@ -7,8 +7,8 @@ export default class HeaderTop extends Component {
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-top font-weight-bold">
         <div className="container Hi-or">
           <span>
-            Hi! <span className="red">Sign in</span> or{" "}
-            <span className="red">Register</span>
+            Hi! <span className="red-text">Sign in</span> or{" "}
+            <span className="red-text">Register</span>
           </span>
           <span className="pul-right">
             <span className="price">

@@ -1,5 +1,7 @@
 import React from "react";
 import "./ProductCard.scss";
+import { Link } from 'react-router-dom';
+
 
 const ProductCard = props => {
   const image = `https://backendapi.turing.com/images/products/${
@@ -14,7 +16,8 @@ const ProductCard = props => {
           <p class="card-text mt-2 font-weight-bold price">
             &#163;{props.price}
           </p>
-          <button className="purchase-btn">Buy now</button>
+          <Link to={`/products/${props.id}`}><button className="purchase-btn" >Buy now</button></Link>
+          {console.log(props.id,'dkdkdk')}
         </div>
       </div>
     </div>
