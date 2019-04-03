@@ -9,6 +9,7 @@
   --sky-blue: #6eb2fb;
   --macaroni-and-cheese: #f1ad3d;
   --white-two: #ffffff;
+  --white-three: #efefef;
   --greyish: #b4b4b4;
 }
 /* Text styles */
@@ -46,4 +47,7 @@
 
 body {
   background-color: var(--white);
+}
+button:focus {
+  outline: none;
 }

@@ -56,7 +56,7 @@ export default class Header extends Component {
                 aria-label="Search"
               />
             </form>
-            <span className="cart">
+            <span className="cart" data-toggle="modal" data-target="#exampleModal">
               <i className="fas fa-shopping-bag " />
               <sup>
                 <span className="badge badge-light">6</span>
