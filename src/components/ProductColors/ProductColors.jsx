@@ -3,18 +3,15 @@ import "./ProductColors.scss";
 
 const ProductColors = ({ colors }) => {
   const color = colors && colors.map(color => {
-    return <label className={`btn btn-secondary mr-3 ${color.toLowerCase()}`}>
+    return <label className={`btn btn-default mr-3 ${color.toLowerCase()}`}>
       <input
         type="radio"
-        name="options"
-        id="option1"
-        autocomplete="off"
-        checked
+        name="color"
       />
     </label>
   });
   return (
-    <div class="btn-group btn-group-toggle" data-toggle="buttons">
+    <div class="btn-grp btn-group-toggle" data-toggle="buttons">
       {color}
     </div>
   );

@@ -4,7 +4,7 @@
   background-color: #efefef;
   margin-right: 10px;
 }
-.btn-groups > .btn:hover {
+.btn-groups > .btn:hover, .btn.active {
     width: 55px;
     border-radius: 2px;
     background-color: var(--red-pink);;

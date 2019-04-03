@@ -10,6 +10,7 @@ import PropTypes from "prop-types";
 import ProductColors from "../ProductColors/ProductColors";
 import ProductSizes from "../ProductSizes/ProductSizes";
 import ProductReviews from "../ProductReviews/ProductReviews";
+import AddReview from "../AddReview/AddReview";
 import "./ViewProduct.scss";
 
 class ViewProduct extends Component {
@@ -74,7 +75,7 @@ class ViewProduct extends Component {
                 />
               </div>
               <div className="row mt-5 mx-auto ">
-                <div className="col-md-3">
+                <div className="col-md-2 mr-2">
                   <img
                     src={`https://backendapi.turing.com/images/products/${
                       this.state.image
@@ -85,7 +86,7 @@ class ViewProduct extends Component {
                     onClick={() => this.handleImageChange(this.props.image)}
                   />
                 </div>
-                <div className="col-md-3">
+                <div className="col-md-2">
                   <img
                     src={`https://backendapi.turing.com/images/products/${
                       this.state.image_2
@@ -122,6 +123,9 @@ class ViewProduct extends Component {
               <div className="product-sub-heading">Size</div>
               <ProductSizes sizes={sizes} />
               <div className="product-sub-heading">Quantity</div>
+              <div className="quantity">
+                <button>-</button> <input type="number"/><button>+</button>
+              </div>
               <div className="col-md-6 pl-0 mt-4">
                 <button className="cart-btn">Add to cart</button>
               </div>
@@ -136,6 +140,7 @@ class ViewProduct extends Component {
               {reviews}
             </div>
           </div>
+          <AddReview />
         </div>
       </Fragment>
     );

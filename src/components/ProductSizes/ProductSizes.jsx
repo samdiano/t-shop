@@ -4,7 +4,7 @@ import "./ProductSizes.scss";
 const ProductSizes = ({ sizes }) => {
   const size = sizes && sizes.map(size => {
     return <label class="btn btn-default">
-        <input type="radio" name="options" id="option2" />
+        <input type="radio" name="size" />
         {size}
       </label>
   });

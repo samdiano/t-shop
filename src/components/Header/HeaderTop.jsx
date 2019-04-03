@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import flag from '../../assets/images/british-flag.png';
+import ShoppingCart from '../ShoppingCart/ShoppingCart';
 
 export default class HeaderTop extends Component {
   render() {
@@ -20,7 +21,7 @@ export default class HeaderTop extends Component {
               />{" "}
               £ GBP
             </span>
-            <span className="cart-top">
+            <span className="cart-top" data-toggle="modal" data-target="#exampleModal">
               <i className="fas fa-shopping-bag" />
               <sup>
                 <span className="badge badge-light">6</span>
@@ -29,6 +30,7 @@ export default class HeaderTop extends Component {
             <span>Your bag: £3.99</span>
           </span>
         </div>
+        <ShoppingCart />
       </nav>
     );
   }

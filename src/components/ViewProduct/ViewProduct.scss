@@ -74,3 +74,29 @@
   text-align: center;
   color: var(--red-pink);
 }
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
+    margin: 0; /* <-- Apparently some margin are still there even though it's hidden */
+}
+
+input[type=number] {
+    -moz-appearance:textfield; /* Firefox */
+}
+.quantity > button{
+  width: 36px;
+  height: 36px;
+  background-color: var(--white-three);
+  border-radius: 50%
+}
+
+.quantity > input {
+  width: 50px;
+  height: 36px;
+  border-radius: 100px;
+  border: solid 1px #e1e1e1;
+  background-color: #ffffff;
+  padding: 0 auto;
+  text-align: center;
+}
