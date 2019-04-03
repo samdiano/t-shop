@@ -6,7 +6,7 @@ import ProductCard from "../ProductCard/ProductCard";
 import Pagination from "../Pagination/Pagination";
 
 class ProductsList extends Component {
-  state = { products: [], currentPage: 1, pageSize: 6, maxPages: 5 };
+  state = { products: [], currentPage: 1, pageSize: 6, maxPages: 5, success : false };
 
   static getDerivedStateFromProps(props) {
     return props;
@@ -28,6 +28,7 @@ class ProductsList extends Component {
       return this.state.products.map(product => (
         <ProductCard
           key={product.product_id}
+          id={product.product_id}
           description={product.description}
           price={product.price}
           name={product.name}
@@ -54,8 +55,8 @@ class ProductsList extends Component {
 }
 
 const mapStateToProps = state => ({
-  products: state.products.rows,
-  totalItems: state.products.count
+  products: state.products.products.rows,
+  totalItems: state.products.products.count
 });
 
 ProductsList.propTypes = {

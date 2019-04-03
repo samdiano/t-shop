@@ -8,7 +8,7 @@ const Banner = props => {
         src={props.image}
         alt="banner"
         height="336"
-        width="940"
+        width="960"
       />
     </div>
   );
