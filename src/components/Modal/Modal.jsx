@@ -6,7 +6,7 @@ const Modal = ({ title, content }) => {
     <div
       className="modal fade"
       id="exampleModal"
-      tabindex="-1"
+      tabIndex="-1"
       role="dialog"
       aria-labelledby="exampleModalLabel"
       aria-hidden="true"
@@ -36,7 +36,7 @@ const Modal = ({ title, content }) => {
               Close
             </button>
             <button type="button" className="btn checkout-btn">
-              Save changes
+              Checkout
             </button>
           </div>
         </div>

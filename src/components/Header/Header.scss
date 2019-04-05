@@ -117,11 +117,16 @@ span.price {
 }
 
 .fa-shopping-bag {
-  color: var(--brownish-grey);
-  font-size: 1.3em;
+  color: var(--white-two);
+  font-size: 1.5em;
 }
-.cart {
-  // padding-left: 16%;
+.badge {
+  background-color: var(--red-pink);
+  color: var(--white-two);
+  width: 2em;
+  padding: 3px;
+  margin: 0 0 0 -10px;
+  border-radius: 50%;
 }
 .cart-top {
   margin: 0 20px;

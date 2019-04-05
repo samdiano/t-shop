@@ -1,7 +1,23 @@
 import React, { Component } from "react";
 import "./Header.scss";
+import {
+  getCartId,
+  getCartProducts
+} from "../../requests/cartRequests";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
 
-export default class Header extends Component {
+class Header extends Component {
+  state = { cart: [] };
+  componentDidMount() {
+    this.props.getCartProducts();
+    if (!localStorage.cartId) {
+      this.props.getCartId();
+    }
+  }
+  static getDerivedStateFromProps(props) {
+    return props;
+  }
   render() {
     return (
       <nav className="navbar navbar-expand-lg navbar-light font-weight-bold">
@@ -10,7 +26,7 @@ export default class Header extends Component {
             Shopmate
           </a>
           <span
-            className="navbar-toggler" 
+            className="navbar-toggler"
             data-toggle="collapse"
             data-target="#navbarsExample07"
             aria-controls="navbarsExample07"
@@ -20,7 +36,10 @@ export default class Header extends Component {
             <span className="navbar-toggler-icon" />
           </span>
 
-          <div className="collapse navbar-collapse d-flex justify-content-between" id="navbarsExample07">
+          <div
+            className="collapse navbar-collapse d-flex justify-content-between"
+            id="navbarsExample07"
+          >
             <ul className="navbar-nav mr-4">
               <li className="navbar-item">
                 <a className="nav-link" href="#">
@@ -56,15 +75,25 @@ export default class Header extends Component {
                 aria-label="Search"
               />
             </form>
-            <span className="cart" data-toggle="modal" data-target="#exampleModal">
-              <i className="fas fa-shopping-bag " />
-              <sup>
-                <span className="badge badge-light">6</span>
-              </sup>
-            </span>
           </div>
         </div>
       </nav>
     );
   }
 }
+
+const mapStateToProps = state => ({
+  cart: state.cart.cart
+});
+
+Header.propTypes = {
+  cart: PropTypes.array
+};
+
+export default connect(
+  mapStateToProps,
+  {
+    getCartProducts,
+    getCartId,
+  }
+)(Header);

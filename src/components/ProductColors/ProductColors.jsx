@@ -1,17 +1,25 @@
 import React from "react";
 import "./ProductColors.scss";
 
-const ProductColors = ({ colors }) => {
-  const color = colors && colors.map(color => {
-    return <label className={`btn btn-default mr-3 ${color.toLowerCase()}`}>
-      <input
-        type="radio"
-        name="color"
-      />
-    </label>
-  });
+const ProductColors = ({ colors, handleColorClick }) => {
+  const color =
+    colors &&
+    colors.map(color => {
+      return (
+        <label
+          key={color}
+          className={`btn btn-default mr-3 ${color.toLowerCase()}`}
+          onClick={() => handleColorClick(color)}
+        >
+          <input
+            type="radio"
+            name="color"
+          />
+        </label>
+      );
+    });
   return (
-    <div class="btn-grp btn-group-toggle" data-toggle="buttons">
+    <div className="btn-grp btn-group-toggle" data-toggle="buttons">
       {color}
     </div>
   );

@@ -1,14 +1,14 @@
 import React, { Component } from "react";
-import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
+import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import "./App.scss";
 import { Provider } from "react-redux";
-import Header from './components/Header/Header';
-import HeaderTop from './components/Header/HeaderTop';
-import Footer from './components/Footer/Footer';
-import Home from './components/Home/Home';
-import ViewProduct from './components/ViewProduct/ViewProduct';
+import Header from "./components/Header/Header";
+import HeaderTop from "./components/Header/HeaderTop";
+import Footer from "./components/Footer/Footer";
+import Home from "./components/Home/Home";
+import ViewProduct from "./components/ViewProduct/ViewProduct";
 import store from "./store";
-import Subscribe from './components/Subscribe/Subscribe';
+import Subscribe from "./components/Subscribe/Subscribe";
 
 class App extends Component {
   render() {
@@ -19,10 +19,15 @@ class App extends Component {
             <HeaderTop />
             <Header />
             <div className="wrapper">
-                <Switch>
-                  <Route exact path= "/" component={Home} />
-                  <Route exact path= "/products/:productId" component={ViewProduct} />
-                </Switch>
+              <Switch>
+                <Route exact path="/" component={Home} />
+                <Route
+                  exact
+                  path="/products/:productId"
+                  component={ViewProduct}
+                />
+                <Route component={Home} />
+              </Switch>
             </div>
             <Subscribe />
             <Footer />
