@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from "react";
 import { getProducts } from "../../requests/productRequests";
+import { getCartId } from "../../requests/cartRequests";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 import ProductCard from "../ProductCard/ProductCard";
@@ -67,6 +68,6 @@ ProductsList.propTypes = {
 export default connect(
   mapStateToProps,
   {
-    getProducts
+    getProducts, getCartId
   }
 )(ProductsList);

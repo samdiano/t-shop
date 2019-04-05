@@ -4,6 +4,7 @@ import {
   getProductAttributes,
   getProductReviews
 } from "../../requests/productRequests";
+import { addToCart } from "../../requests/cartRequests";
 import StarRatings from "react-star-ratings";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
@@ -14,7 +15,13 @@ import AddReview from "../AddReview/AddReview";
 import "./ViewProduct.scss";
 
 class ViewProduct extends Component {
-  state = { product: {}, attributes: [], bigImage: "" };
+  state = {
+    product: {},
+    attribute: [],
+    bigImage: "",
+    attributes: "S, black",
+    quantity: 1
+  };
   componentDidMount() {
     this.props.getProductAttributes(this.props.match.params.productId);
     this.props.getProductReviews(this.props.match.params.productId);
@@ -23,9 +30,36 @@ class ViewProduct extends Component {
   static getDerivedStateFromProps(props) {
     return props;
   }
-  handleImageChange(image) {
+  handleImageChange = image => {
     this.setState({ bigImage: image });
-  }
+  };
+  handleInputChange = e => {
+    this.setState({ quantity: e.target.value });
+  };
+  handleSizeClick = size => {
+    const arr = this.state.attributes.split(",");
+    arr[0] = size;
+    return this.setState({ attributes: arr.join(",") });
+  };
+  handleColorClick = color => {
+    const arr = this.state.attributes.split(",");
+    arr[1] = color;
+    return this.setState({ attributes: arr.join(",") });
+  };
+  handleIncrease = () => {
+    this.setState({ quantity: this.state.quantity + 1 });
+  };
+  handleDecrease = () => {
+    if (this.state.quantity !== 1)
+      this.setState({ quantity: this.state.quantity - 1 });
+  };
+  handleSubmit = () => {
+    const { attributes } = this.state;
+    const product_id = this.props.product.success && this.state.product_id;
+    console.log(product_id);
+    const cart_id = localStorage.cartId;
+    this.props.addToCart({ cart_id, product_id, attributes });
+  };
   componentDidUpdate(prevProps, prevState) {
     if (
       this.props.image &&
@@ -33,17 +67,17 @@ class ViewProduct extends Component {
       prevState.bigImage === ""
     )
       this.setState({ bigImage: this.props.image });
+    console.log(this.state.quantity, "attributesssjsjsjsjjs")
   }
   render() {
-    console.log(this.state, "njbnjb");
     const colors =
-      this.props.attributes &&
-      this.state.attributes
+      this.props.attribute &&
+      this.state.attribute
         .filter(color => color.attribute_name === "Color")
         .map(x => x.attribute_value);
     const sizes =
-      this.props.attributes &&
-      this.state.attributes
+      this.props.attribute &&
+      this.state.attribute
         .filter(size => size.attribute_name === "Size")
         .map(x => x.attribute_value);
     const reviews =
@@ -51,6 +85,7 @@ class ViewProduct extends Component {
       this.state.reviews.map(review => {
         return (
           <ProductReviews
+            key={review.created_on}
             name={review.name}
             review={review.review}
             rating={review.rating}
@@ -58,7 +93,6 @@ class ViewProduct extends Component {
           />
         );
       });
-    console.log(reviews, "rercygh");
     return (
       <Fragment>
         <div className="product-container">
@@ -115,19 +149,41 @@ class ViewProduct extends Component {
                   this.state.product.product.description}
               </span>
               <div className="product-price mt-2">
+                <strike>
+                  {" "}
+                  <sup>
+                    {this.props.product.success && this.state.product.product.discounted_price!== '0.00' &&
+                     (`£ ${this.state.product.product.price}`)}
+                  </sup>
+                </strike>{" "}
                 £
-                {this.props.product.success && this.state.product.product.price}
+                {this.props.product.success &&
+                  this.state.product.product.discounted_price === '0.00' ? this.state.product.product.price: this.state.product.product.discounted_price }
               </div>
               <div className="product-sub-heading">Color</div>
-              <ProductColors colors={colors} />
+              <ProductColors
+                colors={colors}
+                handleColorClick={this.handleColorClick}
+              />
               <div className="product-sub-heading">Size</div>
-              <ProductSizes sizes={sizes} />
+              <ProductSizes
+                sizes={sizes}
+                handleSizeClick={this.handleSizeClick}
+              />
               <div className="product-sub-heading">Quantity</div>
               <div className="quantity">
-                <button>-</button> <input type="number"/><button>+</button>
+                <button onClick={this.handleDecrease}>-</button>
+                <input
+                  type="number"
+                  value={this.state.quantity}
+                  onchange={this.handleInputChange}
+                />
+                <button onClick={this.handleIncrease}>+</button>
               </div>
               <div className="col-md-6 pl-0 mt-4">
-                <button className="cart-btn">Add to cart</button>
+                <button className="cart-btn" onClick={this.handleSubmit}>
+                  Add to cart
+                </button>
               </div>
               <div className="col-md-6" />
             </div>
@@ -151,7 +207,8 @@ const mapStateToProps = state => ({
   product: state.products,
   image: state.products.product.image,
   image_2: state.products.product.image_2,
-  attributes: state.products.attributes,
+  attribute: state.products.attributes,
+  product_id: state.products.product.product_id,
   reviews: state.products.reviews
 });
 
@@ -167,6 +224,7 @@ export default connect(
   {
     getProduct,
     getProductReviews,
-    getProductAttributes
+    getProductAttributes,
+    addToCart
   }
 )(ViewProduct);
