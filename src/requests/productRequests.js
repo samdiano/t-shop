@@ -4,7 +4,8 @@ import {
   FETCH_PRODUCTS,
   FETCH_PRODUCT,
   FETCH_PRODUCT_ATTRIBUTES,
-  FETCH_PRODUCT_REVIEWS
+  FETCH_PRODUCT_REVIEWS,
+  FETCH_DEPARTMENT_PRODUCTS, FETCH_CATEGORY_PRODUCTS
 } from "../actions/types";
 import { productConstant } from "../constants/constants";
 
@@ -20,6 +21,50 @@ export const getProducts = (page, limit) => dispatch => {
     })
     .catch(error =>
       dispatch(asyncActions(FETCH_PRODUCTS).failure(true, error))
+    );
+};
+
+export const getDepartmentProducts = (page, limit, id) => dispatch => {
+  dispatch(asyncActions(FETCH_DEPARTMENT_PRODUCTS).loading(true));
+  axios
+    .get(
+      `${
+        productConstant.PRODUCTS_IN_DEPARTMENT_URL
+      }/${id}?page=${page}&limit=${limit}`
+    )
+    .then(response => {
+      const {data} =response
+      if (response.status === 201) {
+        dispatch(
+          asyncActions(FETCH_DEPARTMENT_PRODUCTS).success({data, id})
+        );
+        dispatch(asyncActions(FETCH_DEPARTMENT_PRODUCTS).loading(false));
+      }
+    })
+    .catch(error =>
+      dispatch(asyncActions(FETCH_DEPARTMENT_PRODUCTS).failure(true, error))
+    );
+};
+
+export const getCategoryProducts = (page, limit, id) => dispatch => {
+  dispatch(asyncActions(FETCH_CATEGORY_PRODUCTS).loading(true));
+  axios
+    .get(
+      `${
+        productConstant.PRODUCTS_IN_CATEGORY_URL
+      }/${id}?page=${page}&limit=${limit}`
+    )
+    .then(response => {
+      const {data} =response
+      if (response.status === 201) {
+        dispatch(
+          asyncActions(FETCH_CATEGORY_PRODUCTS).success({data, id})
+        );
+        dispatch(asyncActions(FETCH_CATEGORY_PRODUCTS).loading(false));
+      }
+    })
+    .catch(error =>
+      dispatch(asyncActions(FETCH_CATEGORY_PRODUCTS).failure(true, error))
     );
 };
 
