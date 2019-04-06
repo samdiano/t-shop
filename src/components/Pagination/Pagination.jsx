@@ -67,6 +67,7 @@ const Pagination = ({
   handlePagination
 }) => {
   const pager = paginate(totalItems, currentPage, pageSize, maxPages);
+  console.log(pager, "kokokokokokokokokokokok");
   const firstPage = pager.pages[0] !== 1 && (
     <span className="d-flex justify-content-between">
       <li className="page-item">
