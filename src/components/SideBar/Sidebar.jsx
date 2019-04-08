@@ -41,7 +41,7 @@ class Sidebar extends Component {
   render() {
     const handleDepartmentClick = (e) => {
       this.props.getDepartmentProducts(1, 6, e.target.value);
-      this.props.id && this.props.getCategories(Number(this.props.id) +1);
+      this.props.id && this.props.getCategories(e.target.value);
       this.setState({ department: e.target.value });
     };
 
