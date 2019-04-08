@@ -106,6 +106,7 @@ class ViewProduct extends Component {
                   alt="shirt"
                   width="100%"
                   height="436"
+                  className="big-image"
                 />
               </div>
               <div className="row mt-5 mx-auto ">

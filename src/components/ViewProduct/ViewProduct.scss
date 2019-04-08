@@ -100,3 +100,9 @@ input[type=number] {
   padding: 0 auto;
   text-align: center;
 }
+.big-image{
+  transition: transform .8s;
+}
+.big-image:hover {
+    transform: scale(1.06);
+}

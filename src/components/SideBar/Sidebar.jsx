@@ -16,13 +16,13 @@ class Sidebar extends Component {
     this.props.getDepartments();
   }
   componentDidUpdate(prevProps, prevState) {
-    // if (!prevProps.id) this.props.getCategories(this.props.id);
     if (
       this.state.categories !== this.props.categories ||
       prevState.categories !== this.state.categories
     )
       this.setState({ categories: this.props.categories });
-    if (prevProps.id !== this.props.id && (prevProps.categories[0]!== this.props.categories[0] || prevProps.categories.length === 0)) { this.props.getCategories(this.props.id); }
+    if ((prevProps.id !== this.props.id && prevProps.categories[0] !== this.props.categories[0]) || prevProps.categories.length === 0)  this.props.getCategories(this.props.id);
+    console.log(prevProps.id)
   }
   static getDeivedStateFromProps(props) {
     return props;
@@ -39,10 +39,10 @@ class Sidebar extends Component {
     ));
   };
   render() {
-    const handleDepartmentClick = e => {
+    const handleDepartmentClick = (e) => {
       this.props.getDepartmentProducts(1, 6, e.target.value);
+      this.props.id && this.props.getCategories(Number(this.props.id) +1);
       this.setState({ department: e.target.value });
-      this.props.getCategories(this.props.id);
     };
 
     const departments = this.props.departments.map(department => {
