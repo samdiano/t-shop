@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import flag from "../../assets/images/british-flag.png";
 import {
   getCartTotal,
@@ -6,6 +6,8 @@ import {
   removeCartProduct
 } from "../../requests/cartRequests";
 import ShoppingCart from "../ShoppingCart/ShoppingCart";
+import Login from "../Login/Login";
+import Signup from "../Signup/Signup";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 class HeaderTop extends Component {
@@ -22,10 +24,17 @@ class HeaderTop extends Component {
     return (
       <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-top font-weight-bold">
         <div className="container Hi-or">
-          <span>
-            Hi! <span className="red-text">Sign in</span> or{" "}
-            <span className="red-text">Register</span>
-          </span>
+          {!this.props.username ? (
+            <span >
+              Hi!
+              <span data-toggle="modal" data-target="#login" className="red-text">Sign in</span> or{" "}
+              <span data-toggle="modal" data-target="#signup" className="red-text">Register</span>
+            </span>
+          ) : (
+            <span>
+              Hi! <span className="red-text">{this.props.username}</span>
+            </span>
+          )}
           <span>
             <span className="price">
               {" "}
@@ -46,6 +55,8 @@ class HeaderTop extends Component {
             <span>Your bag: £{this.props.total || 0}</span>
           </span>
         </div>
+        <Login />
+        <Signup />
         <ShoppingCart />
       </nav>
     );
@@ -54,7 +65,8 @@ class HeaderTop extends Component {
 
 const mapStateToProps = state => ({
   cart: state.cart.cart,
-  total: state.cart.total
+  total: state.cart.total,
+  username: state.customer.user.name
 });
 
 HeaderTop.propTypes = {

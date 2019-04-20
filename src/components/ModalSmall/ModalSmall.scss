@@ -1,0 +1,49 @@
+.modal-title {
+  height: 36px;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  color: #2e2e2e;
+}
+.modal-body {
+  font-family: LucidaGrande;
+  font-size: 16px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: normal;
+  color: #2e2e2e;
+}
+.close-btn {
+  width: 163px;
+  height: 48px;
+  border-radius: 24px;
+  background-color: var(--white-two);
+  color: var(--red-pink);
+}
+.modal-footer {
+  height: 96px;
+  background-color: var(--white-three);
+}
+
+.checkout-btn {
+  width: 163px;
+  height: 48px;
+  border-radius: 24px;
+  background-color: var(--red-pink);
+  color: var(--white-two);
+}
+.modal-header {
+  border-bottom: 0 none;
+}
+
+.small {
+  width: 380px;
+  box-shadow: 0 20px 40px 0 rgba(0, 0, 0, 0.3);
+  background-color: var(--white-two);
+}

@@ -9,6 +9,7 @@ import Home from "./components/Home/Home";
 import ViewProduct from "./components/ViewProduct/ViewProduct";
 import store from "./store";
 import Subscribe from "./components/Subscribe/Subscribe";
+import Alert from "./components/Alert/Alert";
 
 class App extends Component {
   render() {
@@ -18,6 +19,7 @@ class App extends Component {
           <div className="App">
             <HeaderTop />
             <Header />
+            <Alert />
             <div className="wrapper">
               <Switch>
                 <Route exact path="/" component={Home} />

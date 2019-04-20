@@ -2,7 +2,8 @@ import React, { Component, Fragment } from "react";
 import {
   getProduct,
   getProductAttributes,
-  getProductReviews
+  getProductReviews,
+  addReview
 } from "../../requests/productRequests";
 import { addToCart } from "../../requests/cartRequests";
 import StarRatings from "react-star-ratings";
@@ -20,7 +21,9 @@ class ViewProduct extends Component {
     attribute: [],
     bigImage: "",
     attributes: "S, black",
-    quantity: 1
+    quantity: 1,
+    rating: 0,
+    review: ""
   };
   componentDidMount() {
     this.props.getProductAttributes(this.props.match.params.productId);
@@ -30,6 +33,16 @@ class ViewProduct extends Component {
   static getDerivedStateFromProps(props) {
     return props;
   }
+  handleReviewChange = e => {
+    const { name, value } = e.target;
+    this.setState({ [name]: value });
+  };
+  handleRatingChange = newRating => {
+    this.setState({
+      rating: newRating
+    });
+  };
+
   handleImageChange = image => {
     this.setState({ bigImage: image });
   };
@@ -56,7 +69,6 @@ class ViewProduct extends Component {
   handleSubmit = () => {
     const { attributes } = this.state;
     const product_id = this.props.product.success && this.state.product_id;
-    console.log(product_id);
     const cart_id = localStorage.cartId;
     this.props.addToCart({ cart_id, product_id, attributes });
   };
@@ -67,7 +79,8 @@ class ViewProduct extends Component {
       prevState.bigImage === ""
     )
       this.setState({ bigImage: this.props.image });
-    console.log(this.state.quantity, "attributesssjsjsjsjjs")
+    if (this.props.added !== prevProps.added)
+      this.props.getProductReviews(this.props.match.params.productId);
   }
   render() {
     const colors =
@@ -153,13 +166,16 @@ class ViewProduct extends Component {
                 <strike>
                   {" "}
                   <sup>
-                    {this.props.product.success && this.state.product.product.discounted_price!== '0.00' &&
-                     (`£ ${this.state.product.product.price}`)}
+                    {this.props.product.success &&
+                      this.state.product.product.discounted_price !== "0.00" &&
+                      `£ ${this.state.product.product.price}`}
                   </sup>
                 </strike>{" "}
                 £
                 {this.props.product.success &&
-                  this.state.product.product.discounted_price === '0.00' ? this.state.product.product.price: this.state.product.product.discounted_price }
+                this.state.product.product.discounted_price === "0.00"
+                  ? this.state.product.product.price
+                  : this.state.product.product.discounted_price}
               </div>
               <div className="product-sub-heading">Color</div>
               <ProductColors
@@ -197,7 +213,14 @@ class ViewProduct extends Component {
               {reviews}
             </div>
           </div>
-          <AddReview />
+          <AddReview
+            rating={this.state.rating}
+            review={this.state.review}
+            handleReviewChange={this.handleReviewChange}
+            handleRatingChange={this.handleRatingChange}
+            productId={this.props.product_id}
+            addReview={this.props.addReview}
+          />
         </div>
       </Fragment>
     );
@@ -210,7 +233,8 @@ const mapStateToProps = state => ({
   image_2: state.products.product.image_2,
   attribute: state.products.attributes,
   product_id: state.products.product.product_id,
-  reviews: state.products.reviews
+  reviews: state.products.reviews,
+  added: state.products.added
 });
 
 ViewProduct.propTypes = {
@@ -226,6 +250,7 @@ export default connect(
     getProduct,
     getProductReviews,
     getProductAttributes,
-    addToCart
+    addToCart,
+    addReview
   }
 )(ViewProduct);

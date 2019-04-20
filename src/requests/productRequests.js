@@ -5,7 +5,9 @@ import {
   FETCH_PRODUCT,
   FETCH_PRODUCT_ATTRIBUTES,
   FETCH_PRODUCT_REVIEWS,
-  FETCH_DEPARTMENT_PRODUCTS, FETCH_CATEGORY_PRODUCTS
+  ADD_PRODUCT_REVIEW,
+  FETCH_DEPARTMENT_PRODUCTS,
+  FETCH_CATEGORY_PRODUCTS
 } from "../actions/types";
 import { productConstant } from "../constants/constants";
 
@@ -33,11 +35,9 @@ export const getDepartmentProducts = (page, limit, id) => dispatch => {
       }/${id}?page=${page}&limit=${limit}`
     )
     .then(response => {
-      const {data} =response
+      const { data } = response;
       if (response.status === 201) {
-        dispatch(
-          asyncActions(FETCH_DEPARTMENT_PRODUCTS).success({data, id})
-        );
+        dispatch(asyncActions(FETCH_DEPARTMENT_PRODUCTS).success({ data, id }));
         dispatch(asyncActions(FETCH_DEPARTMENT_PRODUCTS).loading(false));
       }
     })
@@ -55,11 +55,9 @@ export const getCategoryProducts = (page, limit, id) => dispatch => {
       }/${id}?page=${page}&limit=${limit}`
     )
     .then(response => {
-      const {data} =response
+      const { data } = response;
       if (response.status === 201) {
-        dispatch(
-          asyncActions(FETCH_CATEGORY_PRODUCTS).success({data, id})
-        );
+        dispatch(asyncActions(FETCH_CATEGORY_PRODUCTS).success({ data, id }));
         dispatch(asyncActions(FETCH_CATEGORY_PRODUCTS).loading(false));
       }
     })
@@ -107,5 +105,24 @@ export const getProductReviews = payload => dispatch => {
     })
     .catch(error =>
       dispatch(asyncActions(FETCH_PRODUCT_REVIEWS).failure(true, error))
+    );
+};
+
+export const addReview = ({ rating, review, productId }) => dispatch => {
+  console.log(productId, "IDDDDDDD", rating, "IDDDDDDD",review, "IDDDDDDD")
+  dispatch(asyncActions(ADD_PRODUCT_REVIEW).loading(true));
+  axios
+    .post(`${productConstant.ALL_PRODUCTS_URL}/${productId}/reviews`, {
+      rating,
+      review
+    })
+    .then(response => {
+      if (response.status === 200) {
+        dispatch(asyncActions(ADD_PRODUCT_REVIEW).success(response.data));
+        dispatch(asyncActions(ADD_PRODUCT_REVIEW).loading(false));
+      }
+    })
+    .catch(error =>
+      dispatch(asyncActions(ADD_PRODUCT_REVIEW).failure(true, error))
     );
 };

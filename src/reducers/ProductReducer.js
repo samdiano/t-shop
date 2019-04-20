@@ -3,7 +3,9 @@ import {
   FETCH_PRODUCT,
   FETCH_PRODUCT_ATTRIBUTES,
   FETCH_PRODUCT_REVIEWS,
-  FETCH_DEPARTMENT_PRODUCTS, FETCH_CATEGORY_PRODUCTS
+  FETCH_DEPARTMENT_PRODUCTS,
+  FETCH_CATEGORY_PRODUCTS,
+  ADD_PRODUCT_REVIEW
 } from "../actions/types";
 import { asyncActionName } from "../util/AsyncUtil";
 
@@ -50,7 +52,7 @@ const ProductReducer = (state = initialState, action) => {
         error: action.payload.status,
         success: false
       };
-      case asyncActionName(FETCH_CATEGORY_PRODUCTS).loading:
+    case asyncActionName(FETCH_CATEGORY_PRODUCTS).loading:
       return { ...state, loading: action.payload };
     case asyncActionName(FETCH_CATEGORY_PRODUCTS).success:
       return {
@@ -100,10 +102,26 @@ const ProductReducer = (state = initialState, action) => {
     case asyncActionName(FETCH_PRODUCT_REVIEWS).success:
       return {
         ...state,
+        added: false,
         reviews: action.payload,
         success: true
       };
     case asyncActionName(FETCH_PRODUCT_REVIEWS).failure:
+      return {
+        ...state,
+        error: action.payload.status,
+        success: false
+      };
+    case asyncActionName(ADD_PRODUCT_REVIEW).loading:
+      return { ...state, loading: action.payload };
+    case asyncActionName(ADD_PRODUCT_REVIEW).success:
+      return {
+        ...state,
+        reviews: action.payload,
+        added: true,
+        success: true
+      };
+    case asyncActionName(ADD_PRODUCT_REVIEW).failure:
       return {
         ...state,
         error: action.payload.status,

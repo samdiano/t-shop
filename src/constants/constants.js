@@ -5,7 +5,6 @@ export const productConstant = {
   PRODUCTS_ATTRIBUTES_URL: `${BASE_URL}/attributes/inProduct`,
   PRODUCTS_IN_DEPARTMENT_URL: `${BASE_URL}/products/inDepartment`,
   PRODUCTS_IN_CATEGORY_URL: `${BASE_URL}/products/inCategory`
-  
 };
 export const cartConstant = {
   GENERATE_CART_ID_URL: `${BASE_URL}/shoppingcart/generateUniqueId`,
@@ -21,5 +20,9 @@ export const cartConstant = {
 };
 export const departmentConstant = {
   ALL_DEPARTMENTS_URL: `${BASE_URL}/departments`,
-  ALL_CATEGORIES_IN_DEPARTMENT_URL:`${BASE_URL}/categories/inDepartment`,
+  ALL_CATEGORIES_IN_DEPARTMENT_URL: `${BASE_URL}/categories/inDepartment`
+};
+export const customerConstant = {
+  REGISTER_CUSTOMER_URL: `${BASE_URL}/customers`,
+  GET_CUSTOMER_URL: `${BASE_URL}/customer`
 };
