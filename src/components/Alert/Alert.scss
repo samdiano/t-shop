@@ -1,0 +1,16 @@
+.alert-container {
+    background-color: #333333;
+    color: white;
+    position: sticky;
+    padding: .5%;
+    float: right;
+    top: 95%;
+    right: 85%;
+    z-index: 1;
+    display: none;
+    border: 1px solid var(--white-two);
+}
+
+.hide {
+    display: none;
+}

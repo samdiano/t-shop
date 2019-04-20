@@ -3,7 +3,9 @@ import { asyncActions } from "../util/AsyncUtil";
 import {
   GENERATE_CART_ID,
   GET_CART_PRODUCTS,
-  ADD_PRODUCT_TO_CART, TOTAL_AMOUNT_CART, REMOVE_CART_PRODUCT
+  ADD_PRODUCT_TO_CART,
+  TOTAL_AMOUNT_CART,
+  REMOVE_CART_PRODUCT
 } from "../actions/types";
 import { cartConstant } from "../constants/constants";
 
@@ -52,7 +54,7 @@ export const getCartTotal = () => dispatch => {
     );
 };
 
-export const removeCartProduct = (itemId) => dispatch => {
+export const removeCartProduct = itemId => dispatch => {
   dispatch(asyncActions(REMOVE_CART_PRODUCT).loading(true));
   axios
     .delete(`${cartConstant.REMOVE_CART_PRODUCT_URL}/${itemId}`)
@@ -67,7 +69,7 @@ export const removeCartProduct = (itemId) => dispatch => {
     );
 };
 
-export const addToCart = ({cart_id, product_id, attributes}) => dispatch => {
+export const addToCart = ({ cart_id, product_id, attributes }) => dispatch => {
   dispatch(asyncActions(ADD_PRODUCT_TO_CART).loading(true));
   axios
     .post(`${cartConstant.ADD_PRODUCT_TO_CART_URL}`, {

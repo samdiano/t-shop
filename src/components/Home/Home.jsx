@@ -1,11 +1,10 @@
-import React, { Component } from "react";
+import React, { Component, Suspense, lazy } from "react";
 import Banner from "../Banner/Banner";
-import ProductsList from "../ProductsList/ProductsList";
-import SideBar from '../SideBar/Sidebar';
-import banner from '../../assets/images/banner.png';
-import banner2 from '../../assets/images/banner-2.png';
-import Pagination from '../Pagination/Pagination';
-
+import SideBar from "../SideBar/Sidebar";
+import banner from "../../assets/images/banner.png";
+import banner2 from "../../assets/images/banner-2.png";
+import Loader from "react-loader-spinner";
+const ProductsList = lazy(() => import("../ProductsList/ProductsList"));
 
 export default class Home extends Component {
   render() {
@@ -17,7 +16,13 @@ export default class Home extends Component {
             <SideBar />
           </div>
           <div className="col-md-9">
-            <ProductsList />
+            <Suspense
+              fallback={
+                <Loader type="Oval" color="#00BFFF" height="100" width="100" />
+              }
+            >
+              <ProductsList />
+            </Suspense>
           </div>
         </div>
         <span className="p-3">

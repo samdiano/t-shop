@@ -1,19 +1,19 @@
 import React, { Component } from "react";
 import "./Header.scss";
-import {
-  getCartId,
-  getCartProducts
-} from "../../requests/cartRequests";
+import { getCartId, getCartProducts } from "../../requests/cartRequests";
+import { getUser } from "../../requests/customerRequests";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 class Header extends Component {
   state = { cart: [] };
+
   componentDidMount() {
     this.props.getCartProducts();
     if (!localStorage.cartId) {
       this.props.getCartId();
     }
+    this.props.getUser();
   }
   static getDerivedStateFromProps(props) {
     return props;
@@ -95,5 +95,6 @@ export default connect(
   {
     getCartProducts,
     getCartId,
+    getUser
   }
 )(Header);
