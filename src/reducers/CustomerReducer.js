@@ -15,7 +15,7 @@ const CustomerReducer = (state = initialState, action) => {
       localStorage.token = action.payload.accessToken;
       return {
         ...state,
-        user: action.payload.user,
+        user: action.payload.customer,
         isAuthenticated: true,
         token: action.payload.accessToken,
         success: true

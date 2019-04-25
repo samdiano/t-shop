@@ -2,11 +2,12 @@ import React, { Component } from "react";
 import "./Header.scss";
 import { getCartId, getCartProducts } from "../../requests/cartRequests";
 import { getUser } from "../../requests/customerRequests";
+import { searchProducts } from "../../requests/productRequests";
 import { connect } from "react-redux";
 import PropTypes from "prop-types";
 
 class Header extends Component {
-  state = { cart: [] };
+  state = { cart: [], search: "" };
 
   componentDidMount() {
     this.props.getCartProducts();
@@ -15,6 +16,14 @@ class Header extends Component {
     }
     this.props.getUser();
   }
+  handleInputChange = e => {
+    this.setState({ [e.target.name]: e.target.value });
+  };
+
+  handleSearch = (e) => {
+    e.preventDefault();
+    this.props.searchProducts(this.state.search, 1, 6)
+  };
   static getDerivedStateFromProps(props) {
     return props;
   }
@@ -67,12 +76,14 @@ class Header extends Component {
                 </a>
               </li>
             </ul>
-            <form className="form-inline mr-4">
+            <form className="form-inline mr-4" onSubmit={this.handleSearch}>
               <input
                 className="search-bar"
                 type="text"
                 placeholder="Search anything"
-                aria-label="Search"
+                name="search"
+                value={this.state.search}
+                onChange={this.handleInputChange}
               />
             </form>
           </div>
@@ -95,6 +106,7 @@ export default connect(
   {
     getCartProducts,
     getCartId,
-    getUser
+    getUser,
+    searchProducts
   }
 )(Header);

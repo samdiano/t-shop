@@ -3,11 +3,19 @@
   border-radius: 2px;
   background-color: #efefef;
   margin-right: 10px;
-}
-.btn-groups > .btn:hover, .btn.active {
+  &:hover {
     width: 55px;
     border-radius: 2px;
-    background-color: var(--red-pink);;
+    background-color: var(--red-pink);
     margin-right: 10px;
     color: #efefef;
   }
+}
+
+.btn.active {
+  width: 55px;
+  border-radius: 2px;
+  background-color: var(--red-pink);
+  margin-right: 10px;
+  color: #efefef;
+}

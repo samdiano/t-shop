@@ -2,6 +2,7 @@ const BASE_URL = "https://backendapi.turing.com";
 
 export const productConstant = {
   ALL_PRODUCTS_URL: `${BASE_URL}/products`,
+  SEARCH_PRODUCTS_URL: `${BASE_URL}/products/search`,
   PRODUCTS_ATTRIBUTES_URL: `${BASE_URL}/attributes/inProduct`,
   PRODUCTS_IN_DEPARTMENT_URL: `${BASE_URL}/products/inDepartment`,
   PRODUCTS_IN_CATEGORY_URL: `${BASE_URL}/products/inCategory`

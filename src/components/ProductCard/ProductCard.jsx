@@ -12,11 +12,11 @@ const ProductCard = props => {
       <div class="card">
         <div class="card-body product-card">
           <img className="card-img-top" src={image} alt="Card cap" />
-          <p class="card-text mt-2 font-weight-bold">{props.name}</p>
-          <p class="card-text mt-2 font-weight-bold price">
+          <p class="card-text mt-2 font-weight-bold product-name">{props.name}</p>
+          <p class="card-text mt-2 font-weight-bold price product-name">
             &#163;{props.price}
           </p>
-          <Link to={`/products/${props.id}`}><button className="purchase-btn" >Buy now</button></Link>
+          <Link to={`/products/${props.id}`}><button className="purchase-btn product-name" >Buy now</button></Link>
           {console.log(props.id,'dkdkdk')}
         </div>
       </div>

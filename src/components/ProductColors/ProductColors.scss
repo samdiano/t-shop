@@ -1,76 +1,74 @@
 .red {
   background-color: red;
+  &:hover, &.active {
+    border-color: white;
+    background-color: red !important;
+  }
 }
 
-.red:hover,
-.red.active {
-  border-color: white;
-  background-color: red !important;
-}
 .orange {
   background-color: orange;
+  &:hover, &.active {
+    border-color: white;
+    background-color: orange !important;
+  }
 }
-.orange:hover,
-.orange.active {
-  border-color: white;
-  background-color: orange !important;
-}
+
 .green {
   background-color: green;
+  &:hover, &.active {
+    border-color: white;
+    background-color: green !important;
+  }
 }
-.green:hover,
-.green.active {
-  border-color: white;
-  background-color: green !important;
-}
+
 .indigo {
   background-color: indigo;
+  &:hover, &.active {
+    border-color: white;
+    background-color: indigo !important;
+  }
 }
-.indigo:hover,
-.indigo.active {
-  border-color: white;
-  background-color: indigo !important;
-}
+
 .blue {
   background-color: blue;
+  &:hover, &.active {
+    border-color: white;
+    background-color: blue !important;
+  }
 }
-.blue:hover,
-.blue.active {
-  border-color: white;
-  background-color: blue !important;
-}
+
 .purple {
   background-color: purple;
+  &:hover, &.active {
+    border-color: white;
+    background-color: purple !important;
+  }
 }
-.purple:hover,
-.purple.active {
-  border-color: white;
-  background-color: purple !important;
-}
+
 .yellow {
   background-color: yellow;
+  &:hover, &.active {
+    border-color: white;
+    background-color: yellow !important;
+  }
 }
-.yellow:hover,
-.yellow.active {
-  border-color: white;
-  background-color: yellow !important;
-}
+
 .black {
   background-color: black;
+  &:hover, &.active {
+    border-color: white;
+    background-color: black !important;
+  }
 }
-.black:hover,
-.black.active {
-  border-color: white;
-  background-color: black !important;
-}
+
 .white {
   background-color: white;
   border-color: gray;
-}
-.white:hover,
-.white.active {
-  border-color: gray;
-  background-color: white !important;
+  &:hover, &.active {
+    border-color: gray;
+    background-color: white !important;
+  }
 }
 
 .fa-circle {
@@ -78,18 +76,30 @@
   margin-right: 10px;
 }
 
-.btn-grp > .btn-grp > .btn,
-.btn-grp > .btn:not(.dropdown-toggle) {
-  border-radius: 50%;
-  width: 8px;
-  height: 25px;
+.btn-grp > {
+  .btn-grp > .btn {
+    border-radius: 50%;
+    width: 8px;
+    height: 25px;
+  }
+  .btn {
+    &:not(.dropdown-toggle) {
+      border-radius: 50%;
+      width: 8px;
+      height: 25px;
+    }
+    &:hover {
+      border-radius: 50%;
+      margin-right: 10px;
+      border-style: groove;
+      border-width: 3px;
+    }
+  }
 }
 
-.btn-grp > .btn:hover,
 .btn.active {
   border-radius: 50%;
   margin-right: 10px;
   border-style: groove;
   border-width: 3px;
 }
-
