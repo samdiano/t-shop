@@ -53,7 +53,7 @@ class Sidebar extends Component {
       );
     });
     return (
-      <div className="card side-bar">
+      <div className="card side-bar d-none d-sm-none d-md-block">
         <div className="card-header ">
           <div className="filter-heading">Filter 486 items</div>
           <div className="filter-heading-text">
@@ -80,8 +80,7 @@ class Sidebar extends Component {
             {departments}
           </select>
           <div class="list-group pt-4">{this.renderCategories()}</div>
-        </div>
-        <div className="card-footer text-muted">2 days ago</div>
+        </div> 
       </div>
     );
   }

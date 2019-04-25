@@ -25,7 +25,7 @@ export default class Home extends Component {
             </Suspense>
           </div>
         </div>
-        <span className="p-3">
+        <span className="p-3 d-none d-sm-none d-md-none d-lg-block">
           <Banner image={banner2} />
         </span>
       </div>

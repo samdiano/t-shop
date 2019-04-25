@@ -22,13 +22,26 @@ class HeaderTop extends Component {
   }
   render() {
     return (
-      <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-top font-weight-bold">
+      <nav className="navbar navbar-expand-lg navbar-dark bg-dark navbar-top font-weight-bold d-none d-sm-none d-md-none d-lg-block">
         <div className="container Hi-or">
           {!this.props.username ? (
-            <span >
+            <span>
               Hi!
-              <span data-toggle="modal" data-target="#login" className="red-text">Sign in</span> or{" "}
-              <span data-toggle="modal" data-target="#signup" className="red-text">Register</span>
+              <span
+                data-toggle="modal"
+                data-target="#login"
+                className="red-text"
+              >
+                Sign in
+              </span>{" "}
+              or{" "}
+              <span
+                data-toggle="modal"
+                data-target="#signup"
+                className="red-text"
+              >
+                Register
+              </span>
             </span>
           ) : (
             <span>
@@ -38,7 +51,7 @@ class HeaderTop extends Component {
           <span>
             <span className="price">
               {" "}
-              <img src={flag} alt="flag" height="15" /> £ GBP
+              <img src={flag} alt="flag" height="15" /> $ USD
             </span>
             <span
               className="cart pr-2"
@@ -52,7 +65,7 @@ class HeaderTop extends Component {
                 </span>
               </sup>
             </span>
-            <span>Your bag: £{this.props.total || 0}</span>
+            <span>Your bag: ${this.props.total || 0}</span>
           </span>
         </div>
         <Login />
