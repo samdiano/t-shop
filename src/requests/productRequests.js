@@ -30,7 +30,11 @@ export const getProducts = (page, limit) => dispatch => {
 export const searchProducts = (query, page) => dispatch => {
   dispatch(asyncActions(FETCH_PRODUCTS).loading(true));
   axios
-    .get(`${productConstant.SEARCH_PRODUCTS_URL}?query_string=${query}&page=${page}`)
+    .get(
+      `${
+        productConstant.SEARCH_PRODUCTS_URL
+      }?query_string=${query}&page=${page}`
+    )
     .then(response => {
       if (response.status === 200) {
         dispatch(asyncActions(SEARCH_PRODUCTS).success(response.data));
@@ -41,7 +45,6 @@ export const searchProducts = (query, page) => dispatch => {
       dispatch(asyncActions(SEARCH_PRODUCTS).failure(true, error))
     );
 };
-
 
 export const getDepartmentProducts = (page, limit, id) => dispatch => {
   dispatch(asyncActions(FETCH_DEPARTMENT_PRODUCTS).loading(true));
@@ -126,7 +129,6 @@ export const getProductReviews = payload => dispatch => {
 };
 
 export const addReview = ({ rating, review, productId }) => dispatch => {
-  console.log(productId, "IDDDDDDD", rating, "IDDDDDDD", review, "IDDDDDDD");
   dispatch(asyncActions(ADD_PRODUCT_REVIEW).loading(true));
   axios
     .post(`${productConstant.ALL_PRODUCTS_URL}/${productId}/reviews`, {

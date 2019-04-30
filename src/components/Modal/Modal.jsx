@@ -1,5 +1,6 @@
 import React from "react";
 import "./Modal.scss";
+import { Link } from "react-router-dom";
 
 const Modal = ({ title, content }) => {
   return (
@@ -35,9 +36,11 @@ const Modal = ({ title, content }) => {
             >
               Close
             </button>
-            <button type="button" className="btn checkout-btn">
-              Checkout
-            </button>
+            <Link to="/checkout">
+              <button type="button" className="btn checkout-btn">
+                Checkout
+              </button>
+            </Link>
           </div>
         </div>
       </div>

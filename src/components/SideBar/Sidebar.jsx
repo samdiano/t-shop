@@ -21,8 +21,13 @@ class Sidebar extends Component {
       prevState.categories !== this.state.categories
     )
       this.setState({ categories: this.props.categories });
-    if ((prevProps.id !== this.props.id && prevProps.categories[0] !== this.props.categories[0]) || prevProps.categories.length === 0)  this.props.getCategories(this.props.id);
-    console.log(prevProps.id)
+    if (
+      (prevProps.id !== this.props.id &&
+        prevProps.categories[0] !== this.props.categories[0]) ||
+      prevProps.categories.length === 0
+    )
+      this.props.getCategories(this.props.id);
+    console.log(prevProps.id);
   }
   static getDeivedStateFromProps(props) {
     return props;
@@ -32,14 +37,16 @@ class Sidebar extends Component {
       <button
         type="button"
         className="list-group-item list-group-item-action btn"
-        onClick={()=> this.props.getCategoryProducts(1, 6, category.category_id)}
+        onClick={() =>
+          this.props.getCategoryProducts(1, 6, category.category_id)
+        }
       >
         {category.name}
       </button>
     ));
   };
   render() {
-    const handleDepartmentClick = (e) => {
+    const handleDepartmentClick = e => {
       this.props.getDepartmentProducts(1, 6, e.target.value);
       this.props.id && this.props.getCategories(e.target.value);
       this.setState({ department: e.target.value });
@@ -80,7 +87,7 @@ class Sidebar extends Component {
             {departments}
           </select>
           <div class="list-group pt-4">{this.renderCategories()}</div>
-        </div> 
+        </div>
       </div>
     );
   }

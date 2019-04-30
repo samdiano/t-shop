@@ -1,0 +1,36 @@
+.checkout h3 {
+  width: 130px;
+  height: 36px;
+  font-family: Montserrat;
+  font-size: 24px;
+  font-weight: bold;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.5;
+  letter-spacing: 1px;
+  color: #2e2e2e;
+}
+
+.checkout-footer {
+  height: 96px;
+  background-color: #efefef;
+justify-content: center;
+}
+
+.checkout-back {
+    width: 163px;
+    height: 48px;
+    border-radius: 24px;
+    background-color: #ffffff;
+    margin-top: 1%;
+    color: var(--red-pink);
+  }
+  .checkout-next {
+    width: 163px;
+    height: 48px;
+    border-radius: 24px;
+    background-color: var(--red-pink);
+    color: var(--white-two);
+    float: right;
+    margin-top: 1%;
+  }

@@ -10,6 +10,7 @@ import ViewProduct from "./components/ViewProduct/ViewProduct";
 import store from "./store";
 import Subscribe from "./components/Subscribe/Subscribe";
 import Alert from "./components/Alert/Alert";
+import Checkout from "./components/Checkout/Checkout";
 
 class App extends Component {
   render() {
@@ -28,6 +29,7 @@ class App extends Component {
                   path="/products/:productId"
                   component={ViewProduct}
                 />
+                <Route exact path="/checkout" component={Checkout} />
                 <Route component={Home} />
               </Switch>
             </div>

@@ -27,3 +27,10 @@ export const customerConstant = {
   REGISTER_CUSTOMER_URL: `${BASE_URL}/customers`,
   GET_CUSTOMER_URL: `${BASE_URL}/customer`
 };
+export const shippingConstant = {
+  GET_SHIPPING_REGIONS_URL: `${BASE_URL}/shipping/regions`
+};
+export const orderConstant = {
+  GET_ORDER_URL: `${BASE_URL}/orders/shortDetail`,
+  CREATE_ORDER_URL: `${BASE_URL}/orders`
+};
